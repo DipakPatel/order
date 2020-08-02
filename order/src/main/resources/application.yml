@@ -1,0 +1,39 @@
+endpoints:
+  cors:
+    allowed-methods: GET,POST
+    allowed-origins: http://localhost:.com
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+server:
+  port: 9878
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    password: ''
+    url: jdbc:h2:mem:orderitemdb
+    username: sa
+  h2:
+    console:
+      enabled: true
+      path: /h2
+      settings:
+        trace: false
+        web-allow-others: false
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
+feign:
+  client:
+    config:
+      feignName:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+        errorDecoder: com.order.client.decoder.OrderItemErrorDecoder.java
