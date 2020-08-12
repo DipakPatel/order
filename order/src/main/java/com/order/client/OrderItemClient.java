@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@FeignClient
+@FeignClient("OrderItemClient")
 public interface OrderItemClient {
 
     public List<OrderItemResponse> getOrderItem(@PathVariable Long orderId);
